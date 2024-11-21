@@ -1,0 +1,225 @@
+<html><head><base href="root">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HeartCare - Inicio</title>
+<link rel="stylesheet" href="style3.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="app-container" id="app">
+  <header class="header">
+    <h1>HeartCare</h1>
+    <p>Tu compañero de salud cardíaca</p>
+  </header>
+
+  <nav class="nav-menu">
+    <a href="https://example.com/dashboard" class="nav-item">
+      <i class="fas fa-home nav-icon"></i>
+      <span>Inicio</span>
+    </a>
+    <a href="https://example.com/stats" class="nav-item">
+      <i class="fas fa-chart-line nav-icon"></i>
+      <span>Estadísticas</span>
+    </a>
+    <a href="https://example.com/medications" class="nav-item">
+      <i class="fas fa-pills nav-icon"></i>
+      <span>Medicamentos</span>
+    </a>
+    <a href="https://example.com/profile" class="nav-item">
+      <i class="fas fa-user nav-icon"></i>
+      <span>Perfil</span>
+    </a>
+  </nav>
+
+ <!-- panel principal -->
+  <div class="page" id="dashboard" style="display: block;">
+    <main class="main-content">
+      <h2 class="page-title">Panel Principal</h2>
+      
+      <div class="dashboard-cards">
+        <div class="metric-card heart-rate">
+          <i class="fas fa-heartbeat heart-icon"></i>
+          <div class="metric-value">72</div>
+          <div>Ritmo Cardíaco</div>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="metric-card stat-card">
+                <i class="fas fa-stethoscope"></i>
+                <div class="metric-value">120/80</div>
+                <div>Presión Arterial</div>
+              </div>
+      
+              <div class="metric-card stat-card">
+                  <i class="fas fa-walking"></i>
+                  <div class="metric-value">8,467</div>
+                  <div>Pasos</div>
+                </div>
+            </div>
+        </div>
+
+
+      <div class="card">
+        <h3><i class="fas fa-clock"></i> Próximos Medicamentos</h3>
+        <ul class="reminder-list">
+          <li class="reminder-item">
+            <span>Aspirina 100mg</span>
+            <span class="reminder-time">8:00 AM</span>
+          </li>
+          <li class="reminder-item">
+            <span>Enalapril 10mg</span>
+            <span class="reminder-time">2:00 PM</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fas fa-calendar"></i> Próxima Cita</h3>
+        <div class="reminder-item">
+          <div>
+            <strong>Dr. González</strong>
+            <p>Cardiólogo</p>
+          </div>
+          <span class="reminder-time">Mar 15</span>
+        </div>
+      </div>
+
+      <div class="card">
+          <button class="action-button" id="emergencyBtn" href="tel:+573217166060">Llamada de Emergencia</a>
+            <i class="fas fa-ambulance"></i> 
+          </button>
+      </div>
+    </main>
+  </div>
+
+  <!-- estadisticas de salud -->
+  <div class="page" id="stats-page" style="display: none;">
+    <main class="main-content">
+      <h2 class="page-title">Estadísticas de Salud</h2>
+      
+      <div class="card chart-container">
+        <h3>Ritmo Cardíaco (Últimos 7 días)</h3>
+        <canvas id="heartRateChart"></canvas>
+      </div>
+
+      <div class="card chart-container">
+        <h3>Presión Arterial</h3>
+        <canvas id="bloodPressureChart" class="chart-container"></canvas>
+      </div>
+    </main>
+  </div>
+
+  <div class="page" id="medications-page" style="display: none;">
+    <main class="main-content">
+      <h2 class="page-title">Mis Medicamentos</h2>
+     
+      <div class="action-button1">
+        <!-- agg medicamentos -->
+        <h2>Agregar Medicamento</h2>
+        <form id="medicationForm">
+            <div class="form-group">
+                <label>Nombre del Medicamento</label>
+                <input type="text" id="medicationName" required placeholder="Ingrese el nombre del medicamento">
+            </div>
+            <div class="form-group">
+                <label>Hora</label>
+                <input type="time" id="medicationTime" required>
+            </div>
+            <button type="submit" class="submit-btn">Agregar Medicamento</button> 
+        </form>
+      </div>
+      <div class="medications-grid">
+        <div class="medication-card">
+          <div class="medication-info">
+            <h3>Aspirina</h3>
+            <p>2:00 pm</p>
+          </div>
+        </div>
+
+        <div class="medication-card">
+          <div class="medication-info">
+            <h3>Enalapril</h3>
+            <p>8:00 am</p>
+          </div>
+        </div>
+      </div>
+
+    <div id="medicationList" class="medication-list">
+    </div>
+
+    </main>
+  </div>
+
+  <div class="page" id="profile-page" style="display: none;">
+    <main class="main-content">
+      <h2 class="page-title">Mi Perfil</h2>
+
+      <div class="profile-section">
+        <div class="profile-header">
+          <div class="profile-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <div>
+            <h3>Jesus Manuel Polo S</h3>
+            <p>ID: 1062905916</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Nombre completo</label>
+          <input type="text" value="Jesus Manuel Polo S">
+        </div>
+
+        <div class="form-group">
+          <label>Edad</label>
+          <input type="number" value="21">
+        </div>
+
+        <div class="form-group">
+          <label>Teléfono</label>
+          <input type="tel" value="+57 ">
+        </div>
+      </div>
+
+      <div class="emergency-contacts">
+        <h3>Contactos de Emergencia</h3>
+        <div class="contact-card">
+          <div>
+            <h4>Maria P</h4>
+            <p>+57 3166627778</p>
+          </div>
+          <i class="fas fa-phone"></i>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="page" id="emergency-page" style="display: none;">
+    <main class="main-content">
+      <h2 class="page-title">Llamada de Emergencia</h2>
+
+      <button class="emergency-button" id="emergencyCallBtn">
+        <i class="fas fa-phone"></i>
+        <span>SOS</span>
+      </button>
+
+      <div class="card">
+        <h3>Contactos de Emergencia</h3>
+        <ul class="medication-list">
+          <li>
+            <span>Emergencias</span>
+            <a href="tel:911">911</a>
+          </li>
+          <li>
+            <span>Doctor Personal</span>
+            <a href="tel:+1234567890">+1234567890</a>
+          </li>
+        </ul>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="script3.js"></script>
+</body></html>
